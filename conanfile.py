@@ -37,7 +37,8 @@ class OpenVDBConan(ConanFile):
         tools.replace_in_file("src/CMakeLists.txt", "PROJECT ( OpenVDB )",
                               "PROJECT ( OpenVDB )\n" +
                               "include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)\n" +
-                              "conan_basic_setup()")
+                              "conan_basic_setup()\n"+
+                              "ADD_DEFINITIONS(-std=c++11)")
         shutil.copy("CMakeLists.txt", "src/openvdb/CMakeLists.txt")
 
     def build(self):
