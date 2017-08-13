@@ -32,8 +32,8 @@ class OpenVDBConan(ConanFile):
             self.options.fPIC = True
 
     def source(self):
-        self.run("git clone https://github.com/dreamworksanimation/openvdb" +
-                 " -c advice.detachedHead=false -b v%s src" % self.version)
+        self.run("git clone https://github.com/dreamworksanimation/openvdb src")
+        self.run("cd src && git checkout v%s" % self.version)
         tools.replace_in_file("src/CMakeLists.txt", "PROJECT ( OpenVDB )",
                               "PROJECT ( OpenVDB )\n" +
                               "include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)\n" +
