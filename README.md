@@ -40,8 +40,11 @@ and TBB root directories respectively so as to help CMake find them.
 
 # Testing
 
-This conan package has been tested on Windows 10 and MSVC 15.0. Testing on
-CentOS using gcc 4.8 is planned in the near future.
+This conan package has been tested using the following configurations:
+- Windows 10 and MSVC 15.0.
+- CentOS 6 and gcc 4.8 conforming to
+[vfxplatform 2017](http://www.vfxplatform.com/)
+using this [docker image](https://github.com/zogi/docker-mayadev).
 
 If you use this on any other platform/configuration mentioned above, please
 inform me of any problems you encounter.
