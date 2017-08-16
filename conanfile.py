@@ -6,7 +6,7 @@ from conans import ConanFile, CMake, tools
 class OpenVDBConan(ConanFile):
     name = "OpenVDB"
     version = "4.0.2"
-    license = "BSD"
+    license = "MPL-2.0"
     description = "OpenVDB is an open source C++ library comprising a novel hierarchical data structure and a large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids."
     url = "https://github.com/zogi/conan-openvdb"
     requires = ( "glew/2.0.0@coding3d/stable"
