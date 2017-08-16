@@ -21,7 +21,7 @@ class OpenVDBConan(ConanFile):
               , "fPIC": [True, False]
               }
     default_options = "shared=False", "fPIC=False"
-    exports = ["CMakeLists.txt"]
+    exports = ["CMakeLists.txt", "fix-undefined-tbb_librarydir.patch"]
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -40,6 +40,7 @@ class OpenVDBConan(ConanFile):
                               "conan_basic_setup()\n"+
                               "ADD_DEFINITIONS(-std=c++11)")
         shutil.copy("CMakeLists.txt", "src/openvdb/CMakeLists.txt")
+        tools.patch(base_path="src", patch_file="fix-undefined-tbb_librarydir.patch")
 
     def build(self):
 
