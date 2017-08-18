@@ -9,7 +9,9 @@ class OpenVDBConan(ConanFile):
     license = "MPL-2.0"
     description = "OpenVDB is an open source C++ library comprising a novel hierarchical data structure and a large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids."
     url = "https://github.com/zogi/conan-openvdb"
-    requires = ( "glew/2.0.0@coding3d/stable"
+    requires = ( "Boost/1.61.0@eliaskousk/stable"
+               , "TBB/4.4.4@memsharded/testing"
+               , "glew/2.0.0@coding3d/stable"
                , "blosc/1.11.2@zogi/stable"
                , "zlib/1.2.8@lasote/stable"
                , "IlmBase/2.2.0@Mikayex/stable"
@@ -43,9 +45,10 @@ class OpenVDBConan(ConanFile):
         tools.patch(base_path="src", patch_file="fix-undefined-tbb_librarydir.patch")
 
     def build(self):
-
         os.environ.update(
-            { "BLOSC_ROOT": self.deps_cpp_info["blosc"].rootpath
+            { "BOOST_ROOT": self.deps_cpp_info["Boost"].rootpath
+            , "TBB_ROOT": self.deps_cpp_info["TBB"].rootpath
+            , "BLOSC_ROOT": self.deps_cpp_info["blosc"].rootpath
             , "ILMBASE_ROOT": self.deps_cpp_info["IlmBase"].rootpath
             , "OPENEXR_ROOT": self.deps_cpp_info["OpenEXR"].rootpath
             , "GLEW_ROOT": self.deps_cpp_info["glew"].rootpath
@@ -62,12 +65,6 @@ class OpenVDBConan(ConanFile):
             , "OPENVDB_ENABLE_3_ABI_COMPATIBLE": True
             , "CMAKE_INSTALL_PREFIX": self.package_folder
             })
-
-        tbb_root = os.environ.get("TBB_ROOT")
-        if tbb_root:
-            cmake.definitions.update(
-                { "TBB_LIBRARY_PATH": tbb_root + "/lib"
-                })
 
         if "fPIC" in self.options.fields:
             cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE"] = self.options.fPIC
