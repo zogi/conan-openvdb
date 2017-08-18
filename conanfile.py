@@ -73,7 +73,7 @@ class OpenVDBConan(ConanFile):
         cmake.build(target="install")
 
     def package(self):
-        pass
+        self.copy("LICENSE", src="src/openvdb", dst="licenses")
 
     def package_info(self):
         if self.settings.os == "Windows" and not self.options.shared:
