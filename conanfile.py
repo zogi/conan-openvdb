@@ -76,6 +76,8 @@ class OpenVDBConan(ConanFile):
         self.copy("LICENSE", src="src/openvdb", dst="licenses")
 
     def package_info(self):
+        self.cpp_info.cppflags.append("-std=c++11")
+
         if self.settings.os == "Windows" and not self.options.shared:
             self.cpp_info.libs = ["libopenvdb"]
         else:
