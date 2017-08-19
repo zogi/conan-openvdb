@@ -190,7 +190,7 @@ IF (BUILD_SHARED)
       ${Tbb_TBB_LIBRARY}
       ${Ilmbase_HALF_LIBRARY}
       ${ZLIB_LIBRARY}
-      ${BLOSC_blosc_LIBRARY}
+      ${BLOSC_LIBRARY}
       )
 
     SET_TARGET_PROPERTIES(
@@ -213,7 +213,7 @@ ELSE ()
       ${Tbb_TBB_LIBRARY}
       ${Ilmbase_HALF_LIBRARY}
       ${ZLIB_LIBRARY}
-      ${BLOSC_blosc_LIBRARY}
+      ${BLOSC_LIBRARY}
       )
     IF (WIN32)
       SET_TARGET_PROPERTIES ( openvdb_static
@@ -242,7 +242,7 @@ IF (BUILD_TOOLS)
     TARGET_LINK_LIBRARIES ( vdb_print
       openvdb_shared
       ${CMAKE_THREAD_LIBS_INIT}
-      ${BLOSC_blosc_LIBRARY}
+      ${BLOSC_LIBRARY}
       )
 
     SET ( VDB_RENDER_SOURCE_FILES cmd/openvdb_render/main.cc )
@@ -257,7 +257,7 @@ IF (BUILD_TOOLS)
     TARGET_LINK_LIBRARIES ( vdb_render
       openvdb_shared
       ${CMAKE_THREAD_LIBS_INIT}
-      ${BLOSC_blosc_LIBRARY}
+      ${BLOSC_LIBRARY}
       ${Openexr_ILMIMF_LIBRARY}
       ${Ilmbase_ILMTHREAD_LIBRARY}
       ${Ilmbase_IEX_LIBRARY}
