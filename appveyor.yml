@@ -17,8 +17,10 @@ environment:
           CONAN_VISUAL_VERSIONS: 12
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
           CONAN_VISUAL_VERSIONS: 14
-        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-          CONAN_VISUAL_VERSIONS: 15
+    # Neither Boost/1.60.0@lasote/stable nor TBB/4.4.4@memsharded/testing
+    # builds with MSVC 15, so disabling it for now.
+    #   - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #     CONAN_VISUAL_VERSIONS: 15
 
 
 install:
