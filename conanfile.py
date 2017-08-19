@@ -9,7 +9,7 @@ class OpenVDBConan(ConanFile):
     license = "MPL-2.0"
     description = "OpenVDB is an open source C++ library comprising a novel hierarchical data structure and a large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids."
     url = "https://github.com/zogi/conan-openvdb"
-    requires = ( "Boost/1.61.0@eliaskousk/stable"
+    requires = ( "Boost/1.60.0@lasote/stable"
                , "TBB/4.4.4@memsharded/testing"
                , "glew/2.0.0@coding3d/stable"
                , "blosc/1.11.2@zogi/stable"
@@ -17,6 +17,7 @@ class OpenVDBConan(ConanFile):
                , "IlmBase/2.2.0@Mikayex/stable"
                , "OpenEXR/2.2.0@Mikayex/stable"
                )
+    boost_components_needed = "iostreams", "system", "thread"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = { "shared": [True, False]
@@ -32,6 +33,15 @@ class OpenVDBConan(ConanFile):
     def configure(self):
         if self.options.shared and "fPIC" in self.options.fields:
             self.options.fPIC = True
+
+        # Exclude Boost components which are not needed.
+        boost_options = self.options["Boost"]
+        for boost_option in boost_options.fields:
+            if not boost_option.startswith("without_"):
+                continue
+            component = boost_option[8:]
+            if component not in self.boost_components_needed:
+                boost_options.add_option(boost_option, True)
 
     def source(self):
         self.run("git clone https://github.com/dreamworksanimation/openvdb src")
