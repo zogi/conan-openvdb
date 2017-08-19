@@ -11,7 +11,6 @@ class OpenVDBConan(ConanFile):
     url = "https://github.com/zogi/conan-openvdb"
     requires = ( "Boost/1.60.0@lasote/stable"
                , "TBB/4.4.4@memsharded/testing"
-               , "glew/2.0.0@coding3d/stable"
                , "blosc/1.11.2@zogi/stable"
                , "zlib/1.2.8@lasote/stable"
                , "IlmBase/2.2.0@Mikayex/stable"
@@ -61,7 +60,6 @@ class OpenVDBConan(ConanFile):
             , "BLOSC_ROOT": self.deps_cpp_info["blosc"].rootpath
             , "ILMBASE_ROOT": self.deps_cpp_info["IlmBase"].rootpath
             , "OPENEXR_ROOT": self.deps_cpp_info["OpenEXR"].rootpath
-            , "GLEW_ROOT": self.deps_cpp_info["glew"].rootpath
             })
 
         cmake = CMake(self)
