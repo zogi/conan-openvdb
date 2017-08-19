@@ -188,7 +188,7 @@ IF (BUILD_SHARED)
       ${Boost_IOSTREAMS_LIBRARY}
       ${Boost_SYSTEM_LIBRARY}
       ${Tbb_TBB_LIBRARY}
-      ${Ilmbase_HALF_LIBRARY}
+      ${ILMBASE_Half_LIBRARY}
       ${ZLIB_LIBRARY}
       ${BLOSC_LIBRARY}
       )
@@ -211,7 +211,7 @@ ELSE ()
       ${Boost_IOSTREAMS_LIBRARY}
       ${Boost_SYSTEM_LIBRARY}
       ${Tbb_TBB_LIBRARY}
-      ${Ilmbase_HALF_LIBRARY}
+      ${ILMBASE_Half_LIBRARY}
       ${ZLIB_LIBRARY}
       ${BLOSC_LIBRARY}
       )
@@ -258,9 +258,9 @@ IF (BUILD_TOOLS)
       openvdb_shared
       ${CMAKE_THREAD_LIBS_INIT}
       ${BLOSC_LIBRARY}
-      ${Openexr_ILMIMF_LIBRARY}
-      ${Ilmbase_ILMTHREAD_LIBRARY}
-      ${Ilmbase_IEX_LIBRARY}
+      ${OPENEXR_IlmImf_LIBRARY}
+      ${ILMBASE_IlmThread_LIBRARY}
+      ${ILMBASE_Iex_LIBRARY}
       )
 
     SET ( VDB_VIEW_SOURCE_FILES
