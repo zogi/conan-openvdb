@@ -26,18 +26,6 @@ $ conan install --build=missing path_to_your_conanfile
 
 Now just run cmake as usual to build.
 
-### TBB and Boost
-
-TBB and Boost are dependencies of OpenVDB, but being a bit bulky, are not
-included in the conanfile as dependencies. This has the benefit of e.g. being
-able to link against Maya's TBB if OpenVDB is used in a Maya plugin without
-mentioning Maya in this conan package.
-This also has the consequence that TBB and Boost have to be installed to
-somewhere CMake can find in order to build and use this package.
-
-On Windows the `BOOST_ROOT` and `TBB_ROOT` envvars should point to the Boost
-and TBB root directories respectively so as to help CMake find them.
-
 # Testing
 
 This conan package has been tested using the following configurations:
