@@ -23,5 +23,3 @@ pip install conan --upgrade
 pip install conan_package_tools
 
 conan user
-conan remote add -i 0 bintray-zogi https://api.bintray.com/conan/zogi/conan-packages
-conan remote add -i 1 bintray-mikayex https://api.bintray.com/conan/mikayex/conan-packages

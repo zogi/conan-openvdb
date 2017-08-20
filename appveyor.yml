@@ -11,6 +11,7 @@ environment:
     CONAN_CHANNEL: "testing"
     VS150COMNTOOLS: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\Tools\\"
     CONAN_UPLOAD: "https://api.bintray.com/conan/zogi/conan-packages"
+    CONAN_REMOTES: "https://api.bintray.com/conan/zogi/conan-packages"
 
     matrix:
     # OpenVDB 4 needs c++11 features MSVC 12 doesn't provide.
@@ -29,8 +30,6 @@ install:
   - pip.exe install conan --upgrade
   - pip.exe install conan_package_tools
   - conan user # It creates the conan data directory
-  - conan remote add -i 0 bintray-zogi https://api.bintray.com/conan/zogi/conan-packages
-  - conan remote add -i 1 bintray-mikayex https://api.bintray.com/conan/mikayex/conan-packages
 
 test_script:
   - python build.py

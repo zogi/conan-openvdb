@@ -6,6 +6,7 @@ env:
      - CONAN_LOGIN_USERNAME: "zogi"
      - CONAN_CHANNEL: "testing"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/zogi/conan-packages"
+     - CONAN_REMOTES: "https://api.bintray.com/conan/zogi/conan-packages"
 
 linux: &linux
    os: linux
