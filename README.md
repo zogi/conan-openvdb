@@ -5,14 +5,37 @@ library.
 
 # How to use it?
 
+If you are familiar with conan, the only useful information for you in this
+section is that you can obtain pre-built binaries from the
+`https://api.bintray.com/conan/zogi/conan-packages`
+conan remote.
+Otherwise you can find a bit more detailed description on how to use this
+package.
+
 Install [python 2.7+](https://www.python.org/download/releases/2.7/) and
 [conan](http://conanio.readthedocs.io/en/latest/installation.html).
+Add this conan package to your local package recipes either by cloning the repo
+and calling conan export manually, or by adding my conan bintray repository to
+your conan remotes. The latter has the advantage that you can download pre-built
+binaries from bintray.
+
+### Obtain the package from bintray.
+
+To add my conan bintray repo to your conan remotes, run:
+
+```
+$ conan remote add zogi-bintray https://api.bintray.com/conan/zogi/conan-packages
+```
+
+### Add the recipe manually.
 
 Clone this repository. From the directory where you cloned the repo run:
 
 ```
 $ conan export zogi/testing
 ```
+
+### Using the package in your project.
 
 Write a
 [conanfile](http://conanio.readthedocs.io/en/latest/reference/conanfile_txt.html)
