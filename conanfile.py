@@ -32,9 +32,10 @@ class OpenVDBConan(ConanFile):
     def configure(self):
         if self.options.shared and "fPIC" in self.options.fields:
             self.options.fPIC = True
-            self.options["blosc"].fPIC = True
-            self.options["IlmBase"].fPIC = True
-            self.options["OpenEXR"].fPIC = True
+            # Set fPIC=True to all dependencies that have the option.
+            for _, pkg_opts in self.options.deps_package_values.items():
+                if "fPIC" in pkg_opts.fields:
+                    pkg_opts.fPIC = True
 
         # Exclude Boost components which are not needed.
         boost_options = self.options["Boost"]
